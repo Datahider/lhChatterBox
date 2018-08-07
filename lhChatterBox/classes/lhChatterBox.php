@@ -68,7 +68,7 @@ class lhChatterBox extends lhAbstractChatterBox {
             $this->setVars($block);
             return $this->answerFromCsmlBlock($block);
         }
-        throw new Exception("Блок \"".$this->session->get('script_state', 'start')."\" не содержит ссылку на следующий блок."); 
+        throw new Exception("The block \"".$this->session->get('script_state', 'start')."\" does not contain a refference to next block."); 
     }
     
     private function doAiml($stupid=true) {
