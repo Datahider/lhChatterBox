@@ -174,6 +174,7 @@ class lhChatterBox extends lhAbstractChatterBox {
             return $this->session->get($matches[1], '## UNDEF ##');
         }, $result);
  
+        $result = lhTextConv::smilesSubstitutions($result);
         return $result;
     }
 }
