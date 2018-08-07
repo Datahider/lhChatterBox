@@ -49,11 +49,12 @@ class lhChatterBox extends lhAbstractChatterBox {
     
     private function doScript() {
         $this->csml->start($this->session->get('script_state', 'start'));
-        $answer = $this->csml->answer($this->text, $this->session->get('min_hit_ratio_csml', 70));
+        $min_hit_ratio = isset($this->csml['minhit']) ? $this->csml['minhit'] : 70;
+        $answer = $this->csml->answer($this->text, $this->session->get('min_hit_ratio_csml', $min_hit_ratio));
 
         // Нужно проверить. Если это ответ по умолчанию - попробуем разрулить ситуацию при помощи aiml
         if (isset($answer['default'])) {
-            $aiml_answer = $this->doAiml(false);
+            $aiml_answer = $this->doAiml();
             if ($aiml_answer !== false) {
                 $this->session->set("status", "babbler");
                 return $aiml_answer;
@@ -73,12 +74,13 @@ class lhChatterBox extends lhAbstractChatterBox {
     private function doAiml($stupid=true) {
         $context = $this->session->get('context', '');
         $tags = $this->session->get('tags', '');
-        $matches = $this->aiml->bestMatches($this->text, $tags, $this->session->get('min_hit_ratio_csml', 75));
+        $min_hit_ratio = isset($this->aiml['minhit']) ? $this->aiml['minhit'] : 80;
+        $matches = $this->aiml->bestMatches($this->text, $tags, $this->session->get('min_hit_ratio_csml', $min_hit_ratio));
         if ( $context ) {
             $matches = array_merge(
                 $matches,
-                $this->aiml->bestMatches($this->text.' '.$context, $tags, $this->session->get('min_hit_ratio_csml', 75)),    
-                $this->aiml->bestMatches($context.' '.$this->text, $tags, $this->session->get('min_hit_ratio_csml', 75))    
+                $this->aiml->bestMatches($this->text.' '.$context, $tags, $this->session->get('min_hit_ratio_csml', $min_hit_ratio)),    
+                $this->aiml->bestMatches($context.' '.$this->text, $tags, $this->session->get('min_hit_ratio_csml', $min_hit_ratio))    
             );
         }
         krsort($matches);
