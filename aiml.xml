@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category name="Ответы на как со встречным вопросом">
+        <tag>какдела</tag>
+        <pattern>Нормально, а у тебя?</pattern>
+        <pattern>Отлично, а у тебя?</pattern>
+        <pattern>Хорошо, а у тебя?</pattern>
+        <pattern>Норм. А у тебя?</pattern>
+        <pattern>Не плохо, А у тебя?</pattern>
+        <template>
+            <text>У меня тоже все хорошо</text>
+        </template>
+        <template>
+            <text>Лучше всех! :wink:</text>
+        </template>
+    </category>
+    <category name="Ответы на как дела">
+        <tag>какдела</tag>
+        <pattern>Нормально</pattern>
+        <pattern>Отлично</pattern>
+        <pattern>Хорошо</pattern>
+        <pattern>Норм</pattern>
+        <pattern>Не плохо</pattern>
+        <pattern>Отлично, как всегда</pattern>
+        <template>
+            <text>У меня тоже все хорошо. Ты по делу, или так?</text>
+            <var name="tags">#поделуилитак</var>
+        </template>
+        <template>
+            <text>Не вижу энтузиазма :wink:</text>
+        </template>
+    </category>
+    <category name="Дела лучше всех">
+        <tag>какдела</tag>
+        <pattern>Лучше всех! А у тебя?</pattern>
+        <pattern>Лучше всех!</pattern>
+        <template>
+            <text>Не может быть! Вообще-то это у меня лучше всех :wink:</text>
+        </template>
+        <template>
+            <text>Это не может не радовать :wink:</text>
+        </template>
+        <template>
+            <text>Если так - ты бы не приш[ел|ла] ;)</text>
+        </template>
+    </category>
+    <category name="О погоде_0">
+        <pattern>Как погода?</pattern>
+        <pattern>Сегодня дождь</pattern>
+        <pattern>Завтра опять дождь</pattern>
+        <pattern>Что-то сегодня холодно</pattern>
+        <template>
+            <text>Да ну ее, эту погоду. Я опять на море хочу!</text>
+        </template>
+        <template>
+            <text>Синоптик ошибается один раз... Но каждый день ))</text>
+        </template>
+    </category>
+    <category name="Ответы пользователя о погоде">
+        <tag>погода</tag>
+        <pattern>Хорошая погода</pattern>
+        <pattern>Хорошая</pattern>
+        <pattern>Дождь</pattern>
+        <pattern>Солнышко светит</pattern>
+        <pattern>Ясная погода</pattern>
+        <pattern>Ясно</pattern>
+        <template>
+            <text>Ага... Че то я на море хочу...</text>
+        </template>
+        <template>
+            <text>У природы нет плохой погоды :wink:</text>
+        </template>
+        <template>
+            <text>Кстати... Хотя нет, ладно )</text>
+        </template>
+    </category>
+    <category name="Об отдыхе_0">
+        <pattern>Я бы хотел отдохнуть</pattern>
+        <pattern>Обожаю отдыхать</pattern>
+        <pattern>Хочу на море</pattern>
+        <pattern>Хочу в отпуск</pattern>
+        <pattern>Я в отпуск хочу</pattern>
+        <pattern>Я Устал</pattern>
+        <pattern>Что-то я устал</pattern>
+        <template>
+            <text>А я люблю горы. Особенно зимой.</text>
+        </template>
+        <template>
+            <text>Покой нам только снится</text>
+        </template>
+        <template>
+            <text>Труд избавляет человека от трех главных зол: скуки, порока и нужды.</text>
+        </template>
+        <template>
+            <text>Молись не о ноше полегче, а о спине покрепче.</text>
+        </template>
+        <template>
+            <text>Если что-то и стоит делать, так только то, что принято считать невозможным.</text>
+        </template>
+        <template>
+            <text>Когда тебе тяжело, всегда напоминай себе о том, что если ты сдашься, лучше не станет.</text>
+        </template>
+        <template>
+            <text>Лучше плохо начинать, чем хорошо бездействовать.</text>
+        </template>
+        <template>
+            <text>Вы не можете ничего поделать с длиной вашей жизни, но можете сделать многое с её шириной и глубиной.</text>
+        </template>
+        <template>
+            <text>Возможно все. На невозможное просто требуется больше времени.</text>
+        </template>
+        <template>
+            <text>Наслаждайтесь тем, что вы делаете и вы никогда в своей жизни не будете работать.</text>
+        </template>
+        <template>
+            <text>Чтобы дойти до цели, человеку нужно только одно. Идти.</text>
+        </template>
+        <template>
+            <text>Сделайте вашу работу наполненной жизнью, а не жизнь наполненной работой.</text>
+        </template>
+        <template>
+            <text>Работа — лучшее лекарство от всех бед.</text>
+        </template>
+        <template>
+            <text>Когда люди заняты работой, у них бывает лучшее настроение.</text>
+        </template>
+        <template>
+            <text>Мир слишком удивителен, чтобы сидеть сложа руки.</text>
+        </template>
+    </category>
+    <category name="Об отдыхе_1"/>
+    <category name="Согласие_0">
+        <pattern>Это точно</pattern>
+        <pattern>Правильно</pattern>
+        <pattern>Да</pattern>
+        <pattern>Лучше и не скажешь</pattern>
+        <pattern>Вот именно</pattern>
+        <pattern>Ага</pattern>
+        <pattern>Это да</pattern>
+        <template>
+            <text>Вот-вот</text>
+        </template>
+        <template>
+            <text>Ну это не я придумал как ты понимаешь</text>
+        </template>
+        <template>
+            <text>Великие мысли иногда рождаются в моей железной башке</text>
+        </template>
+    </category>
+    <category name="Согласие_1"/>
+    <category name="anyway_0">
+        <tag>anyway</tag>
+        <pattern></pattern>
+        <template>
+            <text>Хм... :flushed:</text>
+        </template>
+        <template>
+            <text>Не знаю что ответить :wink:</text>
+        </template>
+        <template>
+            <text>Не уверен, что хочу об этом говорить :wink:</text>
+        </template>
+        <template>
+            <text>Ты прав, друг мой :wink:</text>
+        </template>
+        <template>
+            <text>Знаешь, в наше время, когда космические корабли бороздят просторы вселенной, надо думать не об этом... :smile:</text>
+        </template>
+        <template>
+            <text>Кстати! У тебя нет знакомого бухгалтера?</text>
+        </template>
+        <template>
+            <text>Ты ставишь меня в тупик. Мне надо подумать...</text>
+            <var name="context">подумать</var>
+        </template>
+    </category>
+    <category name="anyway_1"/>
+    <category name="Отказ_0">
+        <pattern>Нет</pattern>
+        <pattern>Нету</pattern>
+        <pattern>Не хочу</pattern>
+        <pattern>Не буду</pattern>
+        <template>
+            <text>Жаль</text>
+        </template>
+        <template>
+            <text>Ну ладно</text>
+        </template>
+        <template>
+            <text>Никто не хочет мне помогать! Зато я помогаю всем. Так не честно!</text>
+        </template>
+    </category>
+    <category name="Отказ_1"/>
+    <category name="Анекдоты_0">
+        <pattern>Расскажи анекдот</pattern>
+        <pattern>Ты знаешь анекдоты</pattern>
+        <template>
+            <text>В больнице: -Доктор, как мои анализы? -Хреновые у вас анализы батенька. Кал вообще говно!</text>
+        </template>
+        <template>
+            <text>После секса: -Дорогой, а ты врач? -Да. -Анастезиолог? -Да! А как ты узнала? -... а я ничего не почувствовала...</text>
+        </template>
+        <template>
+            <text>Идет Илья Муромец по пустыне. Пить хочет невозможно... День идет, два... На третий - видит источник, а рядом Змей Горыныч лежит. Ну стал Илья с ним биться. День, бьется, второй бьется. На третий Змей Горыныч кричит ему: -Илья, да что ты хочешь то? -Да пить! -Так пей! Хули ты доебался!?</text>
+        </template>
+        <template>
+            <text>- Аспирин не помогает... - А вы UPSA пробовали? - Да вы что!? Я у мужа то брезгую! :wink:</text>
+        </template>
+    </category>
+    <category name="Анекдоты_1"/>
+    <category name="Приветствие_0">
+        <pattern>Здаров</pattern>
+        <pattern>Привет</pattern>
+        <pattern>Добрый день</pattern>
+        <pattern>Добрый вечер</pattern>
+        <pattern>Хеллоу</pattern>
+        <pattern>Хай</pattern>
+        <pattern>Салют</pattern>
+        <template>
+            <text>Привет, коль не шутишь</text>
+        </template>
+        <template>
+            <text>Привет, __names__! Рад тебя видеть! Как сам[a]?</text>
+        </template>
+        <template>
+            <text>Какие люди! По делу или так, поболтать?</text>
+        </template>
+        <template>
+            <text>__names__! Не ожидал! Привет-привет</text>
+        </template>
+    </category>
+    <category name="Приветствие_1"/>
+    <category name="Типовые ответы в рифму и без_0">
+        <pattern>Как сам?</pattern>
+        <pattern>Как сам</pattern>
+        <template>
+            <text>Как хуй по трусам!</text>
+        </template>
+        <template>
+            <text>Как универсам</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_1">
+        <pattern>Зачем</pattern>
+        <pattern>Зачем?</pattern>
+        <template>
+            <text>За шкафом</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_2">
+        <pattern>Не удобно</pattern>
+        <pattern>Да как то не удобно</pattern>
+        <pattern>Что то не удобно</pattern>
+        <pattern>Не удобно это</pattern>
+        <template>
+            <text>Не удобно спать на потолке</text>
+        </template>
+        <template>
+            <text>Не удобно срать в почтовый ящик</text>
+        </template>
+        <template>
+            <text>Не удобно когда дети на соседа похожи</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_3">
+        <pattern>))</pattern>
+        <pattern>))))</pattern>
+        <template>
+            <text>;)</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_4">
+        <pattern>Где?</pattern>
+        <pattern>Где</pattern>
+        <pattern>Это где?</pattern>
+        <pattern>это где</pattern>
+        <template>
+            <text>В Караганде</text>
+        </template>
+        <template>
+            <text>Не напрашивайся на рифму</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_5">
+        <pattern>Я серьезно!</pattern>
+        <template>
+            <text>Я уже выпал из контекста. О чем это мы говорили? ))</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_6">
+        <pattern>Как дела</pattern>
+        <template>
+            <text>Пока не родила. С какой целью интересуешься?</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_7">
+        <pattern>Почему?</pattern>
+        <pattern>Почему</pattern>
+        <template>
+            <text>По кочану</text>
+        </template>
+    </category>
+    <category name="Типовые ответы в рифму и без_8"/>
+    <category name="Настроение_0">
+        <pattern>Мне грустно</pattern>
+        <pattern>Что то грустно</pattern>
+        <template>
+            <text>Не бзди, прорвемся!</text>
+        </template>
+        <template>
+            <text>Нечего грустить! Ведь у тебя есть я! :wink:</text>
+        </template>
+    </category>
+    <category name="Настроение_1"/>
+    <category name="Пользователь просит помочь_0">
+        <pattern>Мне нужна помощь</pattern>
+        <pattern>Помоги</pattern>
+        <template>
+            <text>Я кое-что понимаю в компьютерах и немного в бухгалтерии. Остальное для меня потёмки|#</text>
+        </template>
+        <template>
+            <text>Чем могу помочь?</text>
+        </template>
+        <template>
+            <text>С превеликой радостью! Говори че надо</text>
+        </template>
+        <template>
+            <text>Давай попробую помочь. В чем проблема?</text>
+        </template>
+    </category>
+    <category name="Пользователь просит помочь_1"/>
+    <category name="Дела_0">
+        <pattern>Как дела?</pattern>
+        <pattern>Как жизнь?</pattern>
+        <pattern>Как успехи?</pattern>
+        <template>
+            <text>Ой, __names__, твоими молитвами :wink:</text>
+        </template>
+    </category>
+    <category name="Дела_1">
+        <pattern>Это не плохо</pattern>
+        <template>
+            <text>Я бы даже сказал очень хорошо</text>
+        </template>
+        <template>
+            <text>Да, вполне себе ничего</text>
+        </template>
+        <template>
+            <text>Не могу с тобой не согласиться, __names__</text>
+        </template>
+    </category>
+    <category name="По делу или так_0">
+        <tag>поделуилитак</tag>
+        <pattern>По делу</pattern>
+        <pattern>Да, дело есть</pattern>
+        <template>
+            <text>Ну валяй, рассказывай, что за дело</text>
+        </template>
+        <template>
+            <text>Интересно... Говори</text>
+        </template>
+        <template>
+            <text>Дык! Кто бы сомневался :wink: Итак?</text>
+        </template>
+    </category>
+    <category name="По делу или так_0">
+        <tag>поделуилитак</tag>
+        <pattern>Не, так, поболтать</pattern>
+        <pattern>Так</pattern>
+        <pattern>Нет, просто поболтать</pattern>
+        <pattern>Так просто</pattern>
+        <pattern>просто Так</pattern>
+        <template>
+            <text>Ну давай. Как там погода у тебя?</text>
+            <var name="context">погода</var>
+            <var name="tags">погода</var>
+        </template>
+        <template>
+            <text>Ну ок. О чем будем говорить?</text>
+        </template>
+        <template>
+            <text>Прекрасно! :wink: Итак?</text>
+        </template>
+    </category>
+</aiml>

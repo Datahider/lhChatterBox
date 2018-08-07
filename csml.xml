@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csml>
+    <block name="start">
+        <template>Привет! Я Лостман. А тебя как зовут?</template>
+        <template>Привет, давай знакомиться! Меня зовут Лостман. А тебя?</template>
+        <answer>
+            <validator name="lhNameValidator" var="full"/>
+            <next>Узнал имя</next>
+            <var name="name">__validated_full__</var>
+            <var name="gender">__validated_gender__</var>
+        </answer>
+        <answer>
+            <validator name="lhNameValidator" var="found">2</validator>
+            <next>Два варианта имени</next>
+            <var name="name1">__validated_found0__</var>
+            <var name="name2">__validated_found1__</var>
+            <var name="gender">__validated_gender__</var>
+        </answer>
+        <answer>
+            <validator name="lhNameValidator" var="found"/>
+            <next>Несколько вариантов имени</next>
+            <var name="name1">__validated_found0__</var>
+            <var name="name2">__validated_found1__</var>
+            <var name="gender">__validated_gender__</var>
+        </answer>
+        <answer>
+            <pattern>Не скажу</pattern>
+            <pattern>Тебе зачем?</pattern>
+            <pattern>Тебе какая разница?</pattern>
+            <pattern>Тебе какое дело?</pattern>
+            <pattern>Какая разница?</pattern>
+            <pattern>Никак</pattern>
+            <next>Не хочет называть имя</next>
+        </answer>
+        <answer default="yes">
+            <next>Не распознал имя</next>
+            <var name="name">__user_answer__</var>
+        </answer>
+    </block>
+
+    <block name="Узнал имя">
+        <template>Значит __name__. Ок. Как дела, __vocative__? :wink:</template>
+        <answer>
+            <pattern>Хорошо</pattern>
+            <pattern>Нормально</pattern>
+            <pattern>Отлично</pattern>
+            <pattern>Дела в порядке</pattern>
+            <pattern>Спасибо, хорошо</pattern>
+            <pattern>Норм</pattern>
+            <next>Дела хорошо</next>
+        </answer>
+        <answer default="yes">
+            <next>Не распознанный ответ</next>
+        </answer>
+    </block>
+
+    <block name="Не хочет называть имя">
+        <template>Хм... :thinking: Ок. Я буду называть тебя Уася, хорошо?</template>
+        <hint>Да</hint>
+        <hint>Нет</hint>
+        <answer>
+            <pattern>Да</pattern>
+            <pattern>Без проблем</pattern>
+            <var name="name">Уася</var>
+            <next>Узнал имя</next>
+        </answer>
+        <answer>
+            <pattern>Нет</pattern>
+            <next>Даем возможность исправить имя</next>
+            <var name="name"/>
+        </answer>
+    </block>
+
+    <block name="Не распознал имя">
+        <template>__name__? Редкое имя :wink: Тебя правда так зовут?</template>
+        <hint>Да</hint>
+        <hint>Нет</hint>
+        <answer>
+            <pattern>Да</pattern>
+            <pattern>Ну да</pattern>
+            <next>Узнал имя</next>
+        </answer>
+        <answer>
+            <pattern>Нет</pattern>
+            <pattern>Да нет же</pattern>
+            <next>Даем возможность исправить имя</next>
+            <var name="name"/>
+        </answer>
+        <answer default="yes">
+            <next>Проехали с именем</next>
+        </answer>
+    </block>
+    
+    <block name="Даем возможность исправить имя">
+        <template>Так как же тебя зовут?</template>
+        <answer>
+            <validator name="lhNameValidator" var="full"/>
+            <next>Узнал имя</next>
+            <var name="name">__validated_full__</var>
+        </answer>
+        <answer>
+            <pattern>Не скажу</pattern>
+            <pattert>Тебе зачем?</pattert>
+            <next>Не хочет называть имя повторно</next>
+        </answer>
+        <answer default="yes">
+            <next>Не распознал имя</next>
+            <var name="name">__user_answer__</var>
+        </answer>
+    </block>
+    
+    <block name="Два варианта имени">
+        <template>__name1__ или __name2__?</template>
+        <hint>__name1__</hint>
+        <hint>__name2__</hint>
+        <answer>
+            <validator name="lhFullNameValidator" var="full"/>
+            <next>Узнал имя</next>
+            <var name="name">__validated_full__</var>
+            <var name="gender">__validated_gender__</var>
+        </answer>
+        <answer default="yes">
+            <next>Не распознанный ответ</next>
+        </answer>
+    </block>
+    
+    <block name="Несколько вариантов имени">
+        <template>Хм... У меня есть несколько вариантов... Например __name1__ или __name2__. Скажи полное имя</template>
+        <hint>__name1__</hint>
+        <hint>__name2__</hint>
+        <answer>
+            <validator name="lhFullNameValidator" var="full"/>
+            <next>Узнал имя</next>
+            <var name="name">__validated_full__</var>
+            <var name="gender">__validated_gender__</var>
+        </answer>
+        <answer default="yes">
+            <next>Не распознанный ответ</next>
+        </answer>
+    </block>
+    
+    <block name="Проехали с именем">
+        <template>Ладно, проехали. Буду звать тебя чел. Поболтаем?</template>
+        <answer>
+            <pattert>Давай</pattert>
+            <pattert>Да</pattert>
+            <next>Согласен поболтать</next>
+            <var name="status">babbler</var>
+        </answer>
+        <answer>
+            <pattert>Нет</pattert>
+            <pattert>Не хочу</pattert>
+            <next>Не хочу болтать</next>
+        </answer>
+        <answer>
+            <pattert>О чем?</pattert>
+            <next>О чем болтать</next>
+        </answer>
+        <answer default="yes">
+            <next>Не распознанный ответ</next>
+        </answer>
+    </block>
+    
+    <block name="Не хочет называть имя повторно">
+        <template>Блин, ты че, издеваешься? Давай-ка поговорим завтра. Пока! :fuck:</template>
+        <var name="status">hold</var>
+    </block>
+    
+</csml>
