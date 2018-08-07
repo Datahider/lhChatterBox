@@ -57,7 +57,6 @@ class lhChatterBox extends lhAbstractChatterBox {
         if (isset($answer['default'])) {
             $aiml_answer = $this->doAiml();
             if ($aiml_answer !== false) {
-                $this->session->set("status", "babbler");
                 return $aiml_answer;
             }
         }
