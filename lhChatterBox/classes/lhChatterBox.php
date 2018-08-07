@@ -122,7 +122,7 @@ class lhChatterBox extends lhAbstractChatterBox {
         $this->setVars($selected);
         $hints = [];
         foreach ($selected->hint as $hint) {
-            $hints[] = $hint;
+            $hints[] = (string)$hint;
         }
         
         $answer = [
