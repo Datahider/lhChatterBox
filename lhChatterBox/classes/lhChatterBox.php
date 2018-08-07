@@ -44,7 +44,9 @@ class lhChatterBox extends lhAbstractChatterBox {
         $this->session->set('status', 'script');
         $this->session->set('script_state', (string)$block_name);
 
-        return $this->answerFromCsmlBlock($this->csml->block($block_name));
+        $block = $this->csml->block($block_name);
+        $this->setVars($block);
+        return $this->answerFromCsmlBlock($block);
     }
     
     private function doScript() {
