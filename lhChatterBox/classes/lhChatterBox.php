@@ -51,6 +51,7 @@ class lhChatterBox extends lhAbstractChatterBox {
         $this->csml->start($this->session->get('script_state', 'start'));
         $xml = $this->csml->getCsml();
         $min_hit_ratio = isset($xml['minhit']) ? $xml['minhit'] : 70;
+        error_log($min_hit_ratio);
         $answer = $this->csml->answer($this->text, $this->session->get('min_hit_ratio_csml', $min_hit_ratio));
 
         // Нужно проверить. Если это ответ по умолчанию - попробуем разрулить ситуацию при помощи aiml
