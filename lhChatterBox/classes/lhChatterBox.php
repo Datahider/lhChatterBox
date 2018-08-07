@@ -26,10 +26,10 @@ class lhChatterBox extends lhAbstractChatterBox {
         $this->session->log(lhSessionFile::$facility_chat, 'IN', $text);
         switch ($this->session->get('status', 'script')) {
             case 'script':
-                $answer = $this->answerFromCsmlBlock($this->doScript());
+                $answer = $this->doScript();
                 break;
             case 'babbler':
-                $answer = $this->answerFromAimlCategory($this->doAiml());
+                $answer = $this->doAiml();
                 break;
             case 'proxy':
                 
@@ -49,20 +49,28 @@ class lhChatterBox extends lhAbstractChatterBox {
     
     private function doScript() {
         $this->csml->start($this->session->get('script_state', 'start'));
-        $answer = $this->csml->answer($this->text, $this->session->get('min_hit_ratio_csml', 50));
+        $answer = $this->csml->answer($this->text, $this->session->get('min_hit_ratio_csml', 70));
 
+        // Нужно проверить. Если это ответ по умолчанию - попробуем разрулить ситуацию при помощи aiml
+        if (isset($answer['default'])) {
+            $aiml_answer = $this->doAiml(false);
+            if ($aiml_answer !== false) {
+                $this->session->set("status", "babbler");
+                return $aiml_answer;
+            }
+        }
         // Получили подходящий ответ и работаем с ним
         $this->setVars($answer);
         if ((string)$answer->next != '') {
             $this->session->set('script_state', (string)$answer->next);
             $block = $this->csml->block((string)$answer->next);
             $this->setVars($block);
-            return $block;
+            return $this->answerFromCsmlBlock($block);
         }
         throw new Exception("Блок \"".$this->session->get('script_state', 'start')."\" не содержит ссылку на следующий блок."); 
     }
     
-    private function doAiml() {
+    private function doAiml($stupid=true) {
         $context = $this->session->get('context', '');
         $tags = $this->session->get('tags', '');
         $matches = $this->aiml->bestMatches($this->text, $tags, $this->session->get('min_hit_ratio_csml', 75));
@@ -76,11 +84,13 @@ class lhChatterBox extends lhAbstractChatterBox {
         krsort($matches);
         if (count($matches)) {
             $category = array_shift($matches)[1];
-        } else {
+        } elseif ($stupid) { // Если работаем в режиме глупца - вернем ответ на все случаи жизни
             $matches = $this->aiml->bestMatches('Любая фигня', '#anyway');
             $category = array_shift($matches)[1];
+        } else { // В режиме умного - промолчим - за умного сойдем
+            return false;
         }
-        return $category;
+        return $this->answerFromAimlCategory($category);
     }
     
     private function answerFromCsmlBlock($block) {

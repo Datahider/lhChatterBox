@@ -382,4 +382,11 @@
             <text>Прекрасно! :wink: Итак?</text>
         </template>
     </category>
+    <category name="faq_0">
+        <pattern>Что такое dabot.net?</pattern>
+        <pattern>Что такое дабот нет?</pattern>
+        <template>
+            <text>dabot.net - это сервис, позволяющий создавать боты без программирования, а просто создавая сценарии их работы и определяя ответы на частые вопросы.</text>
+        </template>
+    </category>
 </aiml>
