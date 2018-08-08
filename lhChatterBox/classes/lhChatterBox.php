@@ -46,7 +46,9 @@ class lhChatterBox extends lhAbstractChatterBox {
 
         $block = $this->csml->block($block_name);
         $this->setVars($block);
-        return $this->answerFromCsmlBlock($block);
+        $answer = $this->answerFromCsmlBlock($block);
+        $this->session->log(lhSessionFile::$facility_chat, 'OUT', $answer['text']);
+        return $answer;
     }
     
     private function doScript() {
