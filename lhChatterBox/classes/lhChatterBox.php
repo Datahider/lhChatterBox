@@ -117,6 +117,7 @@ class lhChatterBox extends lhAbstractChatterBox {
     }
     
     private function answerFromAimlCategory($category) {
+        $this->setVars($category);
         foreach ($category->template as $template) {
             $templates[] = $template;
         }
