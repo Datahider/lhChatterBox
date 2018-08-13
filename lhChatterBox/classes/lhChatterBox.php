@@ -31,8 +31,6 @@ class lhChatterBox extends lhAbstractChatterBox {
             case 'babbler':
                 $answer = $this->doAiml();
                 break;
-            case 'proxy':
-                
             default:
                 $answer = false;
         }
