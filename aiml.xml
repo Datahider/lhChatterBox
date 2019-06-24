@@ -389,4 +389,14 @@
             <text>dabot.net - это сервис, позволяющий создавать боты без программирования, а просто создавая сценарии их работы и определяя ответы на частые вопросы.</text>
         </template>
     </category>
+    <category name="Команда новая задача">
+        <pattern>Новая задача</pattern>
+        <pattern>Создать задачу</pattern>
+        <pattern>Создай задачу</pattern>
+        <template>
+            <text>Сформулируй задачу</text>
+            <var name="status">script</var>
+            <var name="script_state">Не хочет называть имя</var>
+        </template>
+    </category>
 </aiml>
