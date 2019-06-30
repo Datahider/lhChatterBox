@@ -184,6 +184,8 @@ class lhChatterBox extends lhAbstractChatterBox {
         $result = preg_replace_callback("/__(\w+)__/", function ($matches) {
             return $this->session->get($matches[1], '## UNDEF ##');
         }, $result);
+        
+        $result = lhTextConv::genderSubstitutions($result, $this->session->get('gender', 1) ? 'm' : 'f');
  
         $result = lhTextConv::smilesSubstitutions($result);
         return $result;
