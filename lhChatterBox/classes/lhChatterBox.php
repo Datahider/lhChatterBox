@@ -101,7 +101,7 @@ class lhChatterBox extends lhAbstractChatterBox {
     private function answerFromCsmlBlock($block) {
         $hints = [];
         foreach ($block->hint as $hint) {
-            $hints[] = (string)$hint;
+            $hints[] = $this->subst((string)$hint);
         }
         $templates = [];
         foreach ($block->template as $template) {
@@ -124,7 +124,7 @@ class lhChatterBox extends lhAbstractChatterBox {
         $this->setVars($selected);
         $hints = [];
         foreach ($selected->hint as $hint) {
-            $hints[] = (string)$hint;
+            $hints[] = $this->subst((string)$hint);
         }
         
         $answer = [
