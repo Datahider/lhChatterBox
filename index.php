@@ -20,7 +20,7 @@ $cb = new lhChatterBox('test_session_' . rand());
 $ai = new lhAIML();
 $ai->loadAiml('aiml.xml');
 $cs = new lhCSML();
-$cs->loadCsml('csml.xml');
+$cs->loadCsml('siteCsml.xml');
 $not_found_blocks = $cs->csmlCheck();
 
 if (count($not_found_blocks)) {

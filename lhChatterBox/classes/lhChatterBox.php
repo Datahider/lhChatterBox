@@ -172,6 +172,11 @@ class lhChatterBox extends lhAbstractChatterBox {
             $result = preg_replace("/__vocative__/", $vocative[rand(0, count($vocative)-1)], $result);
         }
         
+        if (preg_match("/__unformal__/", $result)) {
+            $unformal = $n->unformal($this->session->get('name', '## UNDEF ##'));
+            $result = preg_replace("/__unformal__/", $unformal[rand(0, count($unformal)-1)], $result);
+        }
+        
         $result = preg_replace_callback("/__validated_(\w+)__/", function ($matches) use($validated) {
             return isset($validated[$matches[1]]) ? $validated[$matches[1]] : '## UNDEF ##';
         }, $result);
