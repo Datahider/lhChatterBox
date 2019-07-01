@@ -168,12 +168,22 @@ class lhChatterBox extends lhAbstractChatterBox {
         $result = preg_replace("/__user_answer__/", $this->text, $result);
         
         if (preg_match("/__vocative__/", $result)) {
-            $vocative = $n->shortVocative($this->session->get('name', '## UNDEF ##'));
+            try {
+                $vocative = $n->shortVocative($this->session->get('name', '## UNDEF ##'));
+            }
+            catch (Exception $e) {
+                $vocative = $this->session->get('name', '## UNDEF ##');
+            }
             $result = preg_replace("/__vocative__/", $vocative[rand(0, count($vocative)-1)], $result);
         }
         
         if (preg_match("/__unformal__/", $result)) {
-            $unformal = $n->unformal($this->session->get('name', '## UNDEF ##'));
+            try {
+                $unformal = $n->unformal($this->session->get('name', '## UNDEF ##'));
+            }
+            catch (Exception $e) {
+                $unformal = $this->session->get('name', '## UNDEF ##');
+            }
             $result = preg_replace("/__unformal__/", $unformal[rand(0, count($unformal)-1)], $result);
         }
         
