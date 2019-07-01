@@ -172,7 +172,7 @@ class lhChatterBox extends lhAbstractChatterBox {
                 $vocative = $n->shortVocative($this->session->get('name', '## UNDEF ##'));
             }
             catch (Exception $e) {
-                $vocative = $this->session->get('name', '## UNDEF ##');
+                $vocative = [$this->session->get('name', '## UNDEF ##')];
             }
             $result = preg_replace("/__vocative__/", $vocative[rand(0, count($vocative)-1)], $result);
         }
@@ -182,7 +182,7 @@ class lhChatterBox extends lhAbstractChatterBox {
                 $unformal = $n->unformal($this->session->get('name', '## UNDEF ##'));
             }
             catch (Exception $e) {
-                $unformal = $this->session->get('name', '## UNDEF ##');
+                $unformal = [$this->session->get('name', '## UNDEF ##')];
             }
             $result = preg_replace("/__unformal__/", $unformal[rand(0, count($unformal)-1)], $result);
         }
