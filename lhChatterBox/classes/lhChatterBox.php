@@ -99,6 +99,7 @@ class lhChatterBox extends lhAbstractChatterBox {
     private function doAiml($stupid=true) {
         $context = $this->session->get('context', '');
         $tags = $this->session->get('tags', '');
+        if (!$tags) $tags = '#ever';
         $xml = $this->aiml->getAiml();
         $min_hit_ratio = isset($xml['minhit']) ? $xml['minhit'] : 80;
         $matches = $this->aiml->bestMatches($this->text, $tags, $this->session->get('min_hit_ratio_csml', $min_hit_ratio));

@@ -45,6 +45,7 @@
         </template>
     </category>
     <category name="О погоде_0">
+        <tag>ever</tag>
         <pattern>Как погода?</pattern>
         <pattern>Сегодня дождь</pattern>
         <pattern>Завтра опять дождь</pattern>
