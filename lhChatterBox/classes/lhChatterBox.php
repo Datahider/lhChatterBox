@@ -64,15 +64,38 @@ class lhChatterBox extends lhAbstractChatterBox {
         }
         // Получили подходящий ответ и работаем с ним
         $this->setVars($answer);
-        if ((string)$answer->next != '') {
-            $this->session->set('script_state', (string)$answer->next);
-            $block = $this->csml->block((string)$answer->next);
-            $this->setVars($block);
-            return $this->answerFromCsmlBlock($block);
+        // Обработаем условия перехода
+        foreach ($answer->next as $next) {
+            if ($this->checkCondition($next)) {
+                $this->session->set('script_state', (string)$next);
+                $block = $this->csml->block((string)$next);
+                $this->setVars($block);
+                return $this->answerFromCsmlBlock($block);
+            }
         }
         throw new Exception("The block \"".$this->session->get('script_state', 'start')."\" does not contain a refference to next block."); 
     }
     
+    private function checkCondition($next) {
+        $if = (string)$next['if'];
+        if ($if) {
+            if ( isset($next['eq']) ) {
+                return ($this->session->get($if, null) == (string)$next['eq']);
+            } elseif ( isset($next['ne']) ) {
+                return ($this->session->get($if, null) != (string)$next['ne']);
+            } elseif ( isset($next['match']) ) {
+                return (!!preg_match((string)$next['match'], $this->session->get($if, null)));
+            } elseif ( isset($next['notmatch']) ) {
+                return (!preg_match((string)$next['match'], $this->session->get($if, null)));
+            } else {
+                return ($this->session->get($if, null) ? true : false);
+            }
+        } else {
+            return true;
+        }
+    }
+
+
     private function doAiml($stupid=true) {
         $context = $this->session->get('context', '');
         $tags = $this->session->get('tags', '');

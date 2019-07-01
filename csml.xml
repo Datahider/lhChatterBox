@@ -47,6 +47,7 @@
             <pattern>Дела в порядке</pattern>
             <pattern>Спасибо, хорошо</pattern>
             <pattern>Норм</pattern>
+            <next if="name" eq="Петр">Дела у Пети хорошо</next>
             <next>Дела хорошо</next>
         </answer>
         <answer default="yes">
