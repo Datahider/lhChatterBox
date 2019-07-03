@@ -86,7 +86,7 @@ class lhChatterBox extends lhAbstractChatterBox {
             } elseif ( isset($next['match']) ) {
                 return (!!preg_match((string)$next['match'], $this->session->get($if, null)));
             } elseif ( isset($next['notmatch']) ) {
-                return (!preg_match((string)$next['match'], $this->session->get($if, null)));
+                return (!preg_match((string)$next['notmatch'], $this->session->get($if, null)));
             } else {
                 return ($this->session->get($if, null) ? true : false);
             }
